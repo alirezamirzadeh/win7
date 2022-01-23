@@ -1,10 +1,19 @@
 <script>
 // @ts-nocheck
 
-    import {newSelected} from '../stores/selected'
+    import {newSelected,removeSelect} from '../stores/selected'
+import MyComputer from './MyComputer.svelte';
     export let item;
 
+    let status = false;
+
     const handlClick =(id) => {
+
+        if(item.selected){
+            status = true
+
+            return removeSelect
+        }
         newSelected(id)
     }
 </script>
@@ -17,6 +26,9 @@
 </div>
 
 
+{#if status}
+<svelte:component this={MyComputer}/>
+{/if}
 
 
 <style>
